@@ -57,3 +57,7 @@ expzenzo/
 ├── .env
 ├── package.json
 └── README.md
+
+
+
+Updates: Will be available in 2 days with production url
