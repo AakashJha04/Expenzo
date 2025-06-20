@@ -4,3 +4,14 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
 }
+
+.primary{
+  background-color: aqua;
+  padding: 5px 20px;
+  color: white;
+  border: none;
+}
+
+body,html{
+  overflow-x: hidden;
+}
