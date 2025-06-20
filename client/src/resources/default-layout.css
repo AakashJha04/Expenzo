@@ -47,3 +47,8 @@
 .ant-spin-dot-item{
     background-color: gray !important;
 }
+
+.username {
+  font-size: 18px;
+  margin-right: 10px;
+}
