@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
@@ -38,6 +38,13 @@ function Login() {
       });
     }
   };
+
+useEffect(()=>{
+  if(localStorage.getItem("expenzo-user")){
+    navigate('/home')
+  }
+})
+
 
   return (
     <div

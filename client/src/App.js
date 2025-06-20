@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import Test from './pages/Test';
 import Login from './pages/Login';
@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path='/' element={<FrontPage />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<FrontPage />}/>
+        <Route path='/home' element={<ProtectedRoutes><Home/></ProtectedRoutes>}/>
         <Route path='/test' element={<Test/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
@@ -21,5 +21,15 @@ function App() {
     </div>
   );
 }
+
+
+export function ProtectedRoutes(props){
+  if(localStorage.getItem('expenzo-user')){
+    return props.children;
+  }else{
+    return <Navigate to='/login'/>
+  }
+}
+
 
 export default App;

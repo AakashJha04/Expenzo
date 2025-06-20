@@ -2,6 +2,7 @@ import React from "react";
 import '../resources/default-layout.css'
 
 function DefaultLayout(props) {
+  const user = JSON.parse(localStorage.getItem("expenzo-user"));
   return (
     <div className="layout">
       <div className="header d-flex justify-content-between align-items-center">
@@ -10,7 +11,7 @@ function DefaultLayout(props) {
         </div>
         <div>
             <h1 className="username">
-                Username
+                {user.name}
             </h1>
         </div>
       </div>

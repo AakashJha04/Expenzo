@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ import Spinner from "../component/Spinner";
 
 function Register() {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
       setLoading(true);
@@ -30,6 +31,14 @@ function Register() {
       });
     }
   };
+
+
+  useEffect(()=>{
+    if(localStorage.getItem("expenzo-user")){
+      navigate('/home')
+    }
+  })
+  
 
   return (
     <div className="register">
