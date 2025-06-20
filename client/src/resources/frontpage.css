@@ -6,7 +6,6 @@ section {
   padding: 80px 10%;
 }
 
-
 .homepage {
   display: flex;
   flex-direction: row;
@@ -30,16 +29,50 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  background: linear-gradient(to bottom right, #f5f2ff, #ece7fe);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(160, 120, 243, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.homepage-image:hover {
+  transform: scale(1.02);
 }
 
 .homepage-image > div {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
 }
 
+/* Ensures Lottie canvas has no harsh white bg */
+.homepage-image canvas {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  border-radius: 20px;
+}
 
-/* Hero Section styles already added earlier */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .homepage {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
 
+  .homepage-image {
+    margin-top: 30px;
+  }
+
+  .homepage-image > div {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+/* Buttons */
 .btn {
   background-color: #a078f3;
   color: white;
@@ -50,7 +83,9 @@ section {
   text-decoration: none;
   font-weight: 600;
 }
-.btn:hover { background-color: #8c63e6; }
+.btn:hover {
+  background-color: #8c63e6;
+}
 .btn-outline {
   background: transparent;
   border: 2px solid #a078f3;
