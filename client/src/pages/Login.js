@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
@@ -6,17 +6,20 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../resources/auth.css";
 import axios from "axios";
+import Spinner from "../component/Spinner";
 
 function Login() {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   const onFinish = async (values) => {
     try {
+      setLoading(true);
       const response = await axios.post("/api/users/login", values);
       localStorage.setItem(
         "expenzo-user",
         JSON.stringify({ ...response.data, password: "" })
       );
+      setLoading(false);
       toast.success("🎉 Login Successful!", {
         position: "top-center",
         autoClose: 3000,
@@ -27,6 +30,7 @@ function Login() {
       navigate("/home");
       }, 2000);
     } catch (error) {
+      setLoading(false);
       toast.error("❌ Invalid Credentials", {
         position: "top-center",
         autoClose: 3000,
@@ -40,6 +44,7 @@ function Login() {
       className="register d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
+      {loading && <Spinner/>}
       <ToastContainer />
       <div className="row w-100 justify-content-center align-items-center h-100">
         {/* Form Section */}
