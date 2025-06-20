@@ -1,31 +1,86 @@
-.lottie{
-    height: 400px;
+.register {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.register{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: linear-gradient(to left, #ebc0fd 0%, #d9ded8 100%);;
+.lottie {
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .register input{
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(red, green, blue, alpha);
-} */
-
-.input:focus{
-    outline:none !important;
-    box-shadow: none !important;
+.register h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
-label, a{
-    color: rgba(rgb(254, 254, 254), rgb(227, 236, 227), rgb(237, 237, 244), alpha) !important;
+hr {
+  border: none;
+  height: 1px;
+  background: #ccc;
 }
 
+.register form {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
 
-.register h1{
-    font-size: 25px;
+.ant-form-item-label > label {
+  color: #333 !important;
+  font-weight: 500;
+}
+
+.ant-input,
+.ant-input-password {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.ant-input:focus,
+.ant-input-password:focus {
+  border-color: #5c6ac4;
+  box-shadow: 0 0 0 2px rgba(92, 106, 196, 0.2);
+}
+
+button.btn-primary {
+  background-color: #5c6ac4;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 500;
+}
+
+button.btn-primary:hover {
+  background-color: #4a5abb;
+}
+
+a {
+  color: #5c6ac4;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .lottie {
+    height: 240px;
+  }
+
+  .register form {
+    padding: 20px;
+  }
 }
