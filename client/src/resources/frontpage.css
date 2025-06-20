@@ -172,13 +172,6 @@ section {
 }
 
 /* Footer */
-.footer {
-  background-color: #f9f6ff;
-  text-align: center;
-  padding: 30px;
-  font-size: 0.9rem;
-  color: #888;
-}
 
 .logo {
   font-family: 'Open Sans', sans-serif;
@@ -188,12 +181,6 @@ section {
   letter-spacing: 1px;
   margin: 0;
 }
-
-.footer-logo {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
 
 .site-header {
   padding: 40px 0;
@@ -211,3 +198,36 @@ section {
   letter-spacing: 2px;
 }
 
+
+.footer {
+  background-color: #f3eaff;
+  padding: 40px 20px 0 20px;
+  text-align: center;
+  color: #5f5f5f;
+  border-top: 1px solid #ddd;
+}
+
+.footer-top {
+  margin-bottom: 40px;
+}
+
+.footer-logo-banner {
+  background-color: #f3eaff;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.footer-logo-banner h1 {
+  font-size: 80px;
+  font-weight: 900;
+  color: #8247e5; /* Your purple */
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .footer-logo-banner h1 {
+    font-size: 48px;
+  }
+}

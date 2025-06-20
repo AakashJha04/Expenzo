@@ -162,9 +162,14 @@ function FrontPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <h1 className="logo footer-logo">Expenzo</h1>
-        <p>&copy; 2025 Expenzo. All rights reserved.</p>
-        <p>Made by Aakash with ❤️</p>
+        <div className="footer-top">
+          <p>&copy; 2025 Expenzo. All rights reserved.</p>
+          <p>Made by Aakash with ❤️</p>
+        </div>
+
+        <div className="footer-logo-banner">
+          <h1>Expenzo</h1>
+        </div>
       </motion.footer>
     </div>
   );
