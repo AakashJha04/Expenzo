@@ -179,3 +179,35 @@ section {
   font-size: 0.9rem;
   color: #888;
 }
+
+.logo {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: #8247e5; /* Your favicon purple */
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.footer-logo {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+
+.site-header {
+  padding: 40px 0;
+  background-color: #f7f2ff;
+  border-bottom: 1px solid #e0d3f5;
+  text-align: center; /* center the content */
+}
+
+.site-header .logo {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 900;
+  font-size: 48px; /* bigger text */
+  color: #8247e5; /* your purple shade */
+  margin: 0;
+  letter-spacing: 2px;
+}
+

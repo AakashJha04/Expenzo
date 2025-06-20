@@ -8,6 +8,10 @@ import Lottie from "lottie-react";
 function FrontPage() {
   return (
     <div className="landing-page">
+      <header className="site-header">
+        <h1 className="logo">Expenzo</h1>
+      </header>
+
       {/* Hero Section */}
       <motion.section
         className="homepage"
@@ -158,6 +162,7 @@ function FrontPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
+        <h1 className="logo footer-logo">Expenzo</h1>
         <p>&copy; 2025 Expenzo. All rights reserved.</p>
         <p>Made by Aakash with ❤️</p>
       </motion.footer>
