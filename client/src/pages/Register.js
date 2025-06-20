@@ -1,28 +1,41 @@
 import React from "react";
 import { Form, Input } from "antd";
 import { Link } from "react-router-dom";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react"; // ✅ named import
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import '../resources/auth.css'
 
 function Register() {
+   
+
+   const onFinish=(values)=>{
+    console.log(values)
+   }
+  
+
   return (
     <div
       className="register d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="row w-100 justify-content-center align-items-center">
+      <div className="row w-100 justify-content-center align-items-center h-100">
         {/* Lottie Animation */}
         <div className="col-md-5 text-center mb-4 mb-md-0">
-          <DotLottieReact
+          <div className="lottie">
+            <DotLottieReact
             src="/expenzo_lottie.lottie"
             autoplay
             loop
             style={{ width: "300px", height: "300px" }}
           />
+          </div>
         </div>
 
         {/* Form Section */}
         <div className="col-md-5">
-          <Form layout="vertical">
+             <h1>Expenzo Registration</h1>
+             <hr></hr>
+             <br/>
+          <Form layout="vertical" onFinish={onFinish}>
             <Form.Item label="Name" name="name">
               <Input placeholder="Enter your name" />
             </Form.Item>
@@ -35,7 +48,7 @@ function Register() {
 
             <div className="d-flex justify-content-between align-items-center">
               <Link to="/login">Already Registered? Click here to login</Link>
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary" type="submit">Register</button>
             </div>
           </Form>
         </div>
