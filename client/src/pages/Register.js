@@ -1,14 +1,21 @@
 import React from "react";
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
 import { Link } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import '../resources/auth.css'
+import axios from 'axios';
 
 function Register() {
    
 
-   const onFinish=(values)=>{
+   const onFinish=async (values)=>{
     console.log(values)
+    try {
+      await axios.post('/api/users/register', values);
+      message.success("REGISTRATION SUCCESSFULL");
+    } catch (error) {
+      message.error("Something went wrong");
+    }
    }
   
 

@@ -1,14 +1,22 @@
 import React from "react";
-import { Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Form, Input, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import '../resources/auth.css'
+import axios from "axios";
 
 function Login() {
-   
-
-   const onFinish=(values)=>{
+   const navigate = useNavigate();
+   const onFinish= async (values)=>{
     console.log(values)
+    try {
+      const response = await axios.post('/api/users/login', values);
+      localStorage.setItem('expenzo-user', JSON.stringify({...response.data, password:''}))
+      message.success("REGISTRATION SUCCESSFULL");
+      navigate('/');
+    } catch (error) {
+      message.error("Something went wrong");
+    }
    }
   
 
@@ -25,9 +33,6 @@ function Login() {
              <hr></hr>
              <br/>
           <Form layout="vertical" onFinish={onFinish}>
-            <Form.Item label="Name" name="name">
-              <Input placeholder="Enter your name" />
-            </Form.Item>
             <Form.Item label="Email" name="email">
               <Input placeholder="Enter your email" />
             </Form.Item>
