@@ -1,7 +1,9 @@
 import React from "react";
-import { Form, Input, message } from "antd";
+import { Form, Input } from "antd";
 import { Link } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../resources/auth.css";
 import axios from "axios";
 
@@ -9,14 +11,23 @@ function Register() {
   const onFinish = async (values) => {
     try {
       await axios.post("/api/users/register", values);
-      message.success("Registration Successful");
+      toast.success("🎉 Registration Successful!", {
+        position: "top-center",
+        autoClose: 3000,
+        theme: "colored",
+      });
     } catch (error) {
-      message.error("Something went wrong");
+      toast.error("❌ Something went wrong!", {
+        position: "top-center",
+        autoClose: 3000,
+        theme: "colored",
+      });
     }
   };
 
   return (
     <div className="register">
+      <ToastContainer />
       <div className="row w-100 justify-content-center align-items-center h-100">
         {/* Lottie Section */}
         <div className="col-md-5 text-center mb-4 mb-md-0">
