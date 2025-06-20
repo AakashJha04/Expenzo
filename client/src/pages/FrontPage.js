@@ -159,6 +159,7 @@ function FrontPage() {
         transition={{ delay: 0.5 }}
       >
         <p>&copy; 2025 Expenzo. All rights reserved.</p>
+        <p>Made by Aakash with ❤️</p>
       </motion.footer>
     </div>
   );
