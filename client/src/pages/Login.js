@@ -13,7 +13,7 @@ function Login() {
       const response = await axios.post('/api/users/login', values);
       localStorage.setItem('expenzo-user', JSON.stringify({...response.data, password:''}))
       message.success("REGISTRATION SUCCESSFULL");
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       message.error("Something went wrong");
     }

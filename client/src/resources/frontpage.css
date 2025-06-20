@@ -1,0 +1,130 @@
+.landing-page {
+  font-family: "Open Sans", sans-serif;
+}
+
+section {
+  padding: 80px 10%;
+}
+
+/* Hero Section styles already added earlier */
+.homepage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #f5f2ff, #ece7fe);
+  min-height: 100vh;
+}
+.homepage-content { max-width: 50%; }
+.homepage h1 { font-size: 3rem; margin-bottom: 20px; }
+.homepage p { font-size: 1.2rem; margin-bottom: 30px; }
+
+.btn {
+  background-color: #a078f3;
+  color: white;
+  padding: 12px 24px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover { background-color: #8c63e6; }
+.btn-outline {
+  background: transparent;
+  border: 2px solid #a078f3;
+  color: #a078f3;
+}
+.btn-outline:hover {
+  background: #a078f3;
+  color: white;
+}
+.homepage-image img {
+  width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #f9f6ff;
+}
+.stats h2 {
+  font-size: 2rem;
+  color: #a078f3;
+}
+.stats p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Features Section */
+.features h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.features-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.feature {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Testimonials */
+.testimonials {
+  background-color: #f0ebff;
+  text-align: center;
+}
+.testimonial-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.testimonial {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+}
+
+/* CTA Section */
+.cta {
+  background-color: #a078f3;
+  color: white;
+  text-align: center;
+  padding: 60px 10%;
+}
+.cta .btn {
+  margin-top: 20px;
+  background-color: white;
+  color: #a078f3;
+  font-weight: bold;
+}
+.cta .btn:hover {
+  background-color: #f0eaff;
+  color: #7b58c9;
+}
+
+/* Footer */
+.footer {
+  background-color: #f9f6ff;
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9rem;
+  color: #888;
+}
