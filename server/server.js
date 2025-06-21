@@ -1,6 +1,11 @@
 const express  = require('express');
+const cors = require('cors');
 const dbConnect = require('./dbConnect');
 const app = express();
+app.use(cors({
+  origin: 'https://expenzo-frontend-j6wb.onrender.com'
+}));
+
 app.use(express.json());
 require('dotenv').config();
 
