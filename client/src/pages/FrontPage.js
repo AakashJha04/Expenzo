@@ -59,7 +59,12 @@ function FrontPage() {
           <Lottie
             animationData={animationData}
             loop={true}
-            style={{ width: "100%", height: "100%" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              maxWidth: "400px",
+              maxHeight: "300px",
+            }}
           />
         </motion.div>
       </motion.section>
