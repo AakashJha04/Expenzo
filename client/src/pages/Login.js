@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "../resources/auth.css";
 import axios from "axios";
 import Spinner from "../component/Spinner";
+import axiosInstance from '../utils/axiosInstance';
+
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -14,7 +16,7 @@ function Login() {
   const onFinish = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", values);
+      const response = await axiosInstance.post("/api/users/login", values);
       localStorage.setItem(
         "expenzo-user",
         JSON.stringify({ ...response.data, password: "" })

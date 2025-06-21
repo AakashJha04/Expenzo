@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../component/Spinner";
+import axiosInstance from '../utils/axiosInstance';
 
 function AddEditTransaction({
   setShowAddEditTransactionModal,
@@ -17,7 +18,7 @@ function AddEditTransaction({
     try {
       const user = JSON.parse(localStorage.getItem("expenzo-user"));
       if (selectedItemForEdit) {
-        await axios.post("/api/transaction/edit-transaction", {
+        await axiosInstance.post("/api/transaction/edit-transaction", {
           payload:{
             ...values,
           userid: user._id,
@@ -31,7 +32,7 @@ function AddEditTransaction({
           theme: "colored",
         });
       } else {
-        await axios.post("/api/transaction/add-transaction", {
+        await axiosInstance.post("/api/transaction/add-transaction", {
           ...values,
           userid: user._id,
         });

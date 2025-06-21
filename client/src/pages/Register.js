@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../resources/auth.css";
 import axios from "axios";
 import Spinner from "../component/Spinner";
+import axiosInstance from '../utils/axiosInstance';
 
 
 function Register() {
@@ -15,7 +16,7 @@ function Register() {
   const onFinish = async (values) => {
     try {
       setLoading(true);
-      await axios.post("/api/users/register", values);
+      await axiosInstance.post("/api/users/register", values);
       toast.success("🎉 Registration Successful!", {
         position: "top-center",
         autoClose: 3000,

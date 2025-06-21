@@ -9,6 +9,7 @@ import { DatePicker, Select, Table } from 'antd';
 import moment from "moment";
 import { AreaChartOutlined, DeleteOutlined, EditOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import Analytics from '../component/Analytics';
+import axiosInstance from '../utils/axiosInstance';
 
 const { RangePicker } = DatePicker;
 
@@ -40,7 +41,7 @@ function Home() {
         ];
       }
 
-      const response = await axios.post("/api/transaction/get-all-transactions", payload);
+      const response = await .post("/api/transaction/get-all-transactions", payload);
       setTransactionData(response.data);
       setLoading(false);
     } catch (error) {
@@ -57,7 +58,7 @@ function Home() {
    const deleteTransactions = async (record) => {
     try {
       setLoading(true);
-      await axios.post("/api/transaction/delete-transaction", 
+      await axiosInstance.post("/api/transaction/delete-transaction", 
         {
           transactionId: record._id
         }
