@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://aakash:aakash@cluster0.6nf8xkb.mongodb.net/expenzo", {
+require('dotenv').config();
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser:true,
     useUnifiedTopology: true
 });
