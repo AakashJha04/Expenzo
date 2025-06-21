@@ -1,6 +1,6 @@
 import React from "react";
-import '../resources/analytics.css';
-import { Progress } from 'antd';
+import "../resources/analytics.css";
+import { Progress } from "antd";
 
 function Analytics({ transactions }) {
   const totalTransaction = transactions.length;
@@ -16,10 +16,14 @@ function Analytics({ transactions }) {
   const totalExpenseTransaction = totalExpenseTransactionArr.length;
 
   const totalIncomeTransactionPercentage =
-    totalTransaction === 0 ? 0 : (totalIncomeTransaction / totalTransaction) * 100;
+    totalTransaction === 0
+      ? 0
+      : (totalIncomeTransaction / totalTransaction) * 100;
 
   const totalExpenseTransactionPercentage =
-    totalTransaction === 0 ? 0 : (totalExpenseTransaction / totalTransaction) * 100;
+    totalTransaction === 0
+      ? 0
+      : (totalExpenseTransaction / totalTransaction) * 100;
 
   const totalTurnOver = transactions.reduce(
     (acc, transaction) => acc + transaction.amount,
@@ -41,6 +45,20 @@ function Analytics({ transactions }) {
 
   const totalExpenseTurnOverPercentage =
     totalTurnOver === 0 ? 0 : (totalExpenseTurnOver / totalTurnOver) * 100;
+
+  const categories = [
+    "salary",
+    "freelance",
+    "food",
+    "entertainment",
+    "education",
+    "medical",
+    "tax",
+    "rent",
+    "travel",
+    "inventment",
+    "others",
+  ];
 
   return (
     <div className="analytics">
@@ -88,6 +106,26 @@ function Analytics({ transactions }) {
                 percent={totalExpenseTurnOverPercentage.toFixed(2)}
               />
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-6">
+          <div className="income-category-analysis">
+            <h3>Income - category wise</h3>
+            {
+              categories.map((category)=>{
+                const amount= transactions.filter((t) => t.type==="income" && t.category === category)
+                .reduce((acc, t) => acc + t.amount, 0);
+                return (
+                  amount>0 && <div className="category-card">
+                    <h5>{category}</h5>
+                    <Progress percent={((amount/totalIncomeTurnOver)*100).toFixed(1)}/>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
       </div>

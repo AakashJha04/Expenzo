@@ -50,15 +50,17 @@ function AddEditTransaction({setShowAddEditTransactionModal, showAddEditTransact
         </Form.Item>
         <Form.Item label="Category" name='category'>
           <Select>
-          <Select.Option value='salary'>salary</Select.Option>
-          <Select.Option value='freelance'>freelance</Select.Option>
-          <Select.Option value='food'>food</Select.Option>
-          <Select.Option value='entertainment'>entertainment</Select.Option>
-          <Select.Option value='education'>education</Select.Option>
-          <Select.Option value='medical'>medical</Select.Option>
-          <Select.Option value='tax'>tax</Select.Option>
-          <Select.Option value='rent'>rent</Select.Option>
-          <Select.Option value='others'>others</Select.Option>
+          <Select.Option value='salary'>Salary</Select.Option>
+          <Select.Option value='freelance'>Freelance</Select.Option>
+          <Select.Option value='food'>Food</Select.Option>
+          <Select.Option value='entertainment'>Entertainment</Select.Option>
+          <Select.Option value='education'>Education</Select.Option>
+          <Select.Option value='medical'>Medical</Select.Option>
+          <Select.Option value='tax'>Tax</Select.Option>
+          <Select.Option value='rent'>Rent</Select.Option>
+          <Select.Option value='travel'>Travel</Select.Option>
+          <Select.Option value='inventment'>Investment</Select.Option>
+          <Select.Option value='others'>Others</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item label="Date" name='date'>
