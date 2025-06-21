@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../resources/auth.css";
 import axios from "axios";
@@ -43,7 +43,6 @@ function Register() {
   return (
     <div className="register">
        {loading && <Spinner/>}
-      <ToastContainer />
       <div className="row w-100 justify-content-center align-items-center h-100">
         {/* Lottie Section */}
         <div className="col-md-5 text-center mb-4 mb-md-0">
