@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { DatePicker, Select, Table } from 'antd';
 import moment from "moment";
-import { AreaChartOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { AreaChartOutlined, DeleteOutlined, EditOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import Analytics from '../component/Analytics';
 
 const { RangePicker } = DatePicker;
@@ -20,6 +20,7 @@ function Home() {
   const [selectedRange, setSelectedRange] = useState([]);
   const [type, setType] = useState('all');
   const [viewType, setViewType] = useState('table');
+  const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
 
   const getTransactions = async () => {
     try {
@@ -53,6 +54,33 @@ function Home() {
     }
   };
 
+   const deleteTransactions = async (record) => {
+    try {
+      setLoading(true);
+      await axios.post("/api/transaction/delete-transaction", 
+        {
+          transactionId: record._id
+        }
+      );
+       toast.success("🎉 Transaction Deleted Successfully!", {
+                position: "top-center",
+                autoClose: 3000,
+                theme: "colored",
+              });
+      getTransactions();
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error("Fetch Error:", error);
+      toast.error("❌ Something went wrong", {
+        position: "top-center",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
+  };
+
+
   useEffect(() => {
     getTransactions();
   }, [frequency, selectedRange, type]);
@@ -77,8 +105,24 @@ function Home() {
     },
     {
       title: "Reference",
-      dataIndex: "reference"
+      dataIndex: "reference",
     },
+    {
+      title: "Action",
+      dataIndex: "actions",
+      render: (text, record)=>{
+        return <div>
+          <EditOutlined onClick={()=>{
+            setSelectedItemForEdit(record);
+            setShowAddEditTransactionModal(true);
+          }}/>
+          <DeleteOutlined className='mx-3'
+          onClick={()=>{
+            deleteTransactions(record);
+          }}/>
+        </div>
+      },
+    }
   ];
 
   return (
@@ -152,7 +196,9 @@ function Home() {
         <AddEditTransaction
           showAddEditTransactionModal={showAddEditTransactionModal}
           setShowAddEditTransactionModal={setShowAddEditTransactionModal}
+          selectedItemForEdit={selectedItemForEdit}
           getTransactions={getTransactions}
+          setSelectedItemForEdit={setSelectedItemForEdit}
         />
       )}
 
