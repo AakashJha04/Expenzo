@@ -110,10 +110,10 @@ function Analytics({ transactions }) {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row mt-5">
         <div className="col-md-6">
           <div className="income-category-analysis">
-            <h3>Income - category wise</h3>
+            <h4>Income - Category Wise</h4>
             {
               categories.map((category)=>{
                 const amount= transactions.filter((t) => t.type==="income" && t.category === category)
@@ -128,6 +128,27 @@ function Analytics({ transactions }) {
             }
           </div>
         </div>
+
+
+        <div className="col-md-6">
+          <div className="category-analysis">
+            <h4>Expense - Category Wise</h4>
+            {
+              categories.map((category)=>{
+                const amount= transactions.filter((t) => t.type==="expense" && t.category === category)
+                .reduce((acc, t) => acc + t.amount, 0);
+                return (
+                  amount>0 && <div className="category-card">
+                    <h5>{category}</h5>
+                    <Progress percent={((amount/totalExpenseTurnOver)*100).toFixed(1)}/>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+
+
       </div>
     </div>
   );
