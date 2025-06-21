@@ -17,7 +17,7 @@ function AddEditTransaction({setShowAddEditTransactionModal, showAddEditTransact
         autoClose: 3000,
         theme: "colored",
       });
-      getTransactions();
+      getTransactions()
       setShowAddEditTransactionModal(false)
     } catch (error) {
       setLoading(false);

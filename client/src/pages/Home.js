@@ -6,7 +6,7 @@ import Spinner from "../component/Spinner";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Table } from 'antd';
-
+import moment from "moment";
 
 function Home() {
   const [showAddEditTransactionModal, setShowAddEditTransactionModal] = useState(false);
@@ -38,7 +38,8 @@ function Home() {
   const columns = [
     {
       title: "Date",
-      dataIndex: "date"
+      dataIndex: "date",
+      render:(record)=><label>{moment(record.date).format('YYYY-MM-DD')}</label>
     },
      {
       title: "Amount",
