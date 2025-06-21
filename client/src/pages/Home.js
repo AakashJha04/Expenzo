@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { DatePicker, Select, Table } from 'antd';
 import moment from "moment";
 import { AreaChartOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import Analytics from '../component/Analytics';
 
 const { RangePicker } = DatePicker;
 
@@ -140,9 +141,11 @@ function Home() {
       </div>
 
       <div className='table-analytics'>
-        <div className='table'>
+        {viewType === 'table' ? 
+         <div className='table'>
           <Table columns={columns} dataSource={transactionsData} />
-        </div>
+        </div>:
+        <Analytics transactions={transactionsData}/> }
       </div>
 
       {showAddEditTransactionModal && (
