@@ -2,6 +2,8 @@ const express  = require('express');
 const dbConnect = require('./dbConnect');
 const app = express();
 app.use(express.json());
+require('dotenv').config();
+
 
 const userRoute = require('./routes/userRoute'); 
 const transactionRoute = require('./routes/transactionRoute');
@@ -9,7 +11,7 @@ const transactionRoute = require('./routes/transactionRoute');
 app.use('/api/users/', userRoute);
 app.use('/api/transaction', transactionRoute);
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 
 app.get('/', (req,res) => {
