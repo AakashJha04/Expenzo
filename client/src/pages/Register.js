@@ -43,6 +43,10 @@ function Register() {
 
   return (
     <div className="register">
+       {/* Floating Coins */}
+  <DotLottieReact src="/expenzo_lottie.lottie" autoplay loop className="coin" />
+  <DotLottieReact src="/expenzo_lottie.lottie" autoplay loop className="coin" />
+  <DotLottieReact src="/expenzo_lottie.lottie" autoplay loop className="coin" />
        {loading && <Spinner/>}
       <div className="row w-100 justify-content-center align-items-center h-100">
         {/* Lottie Section */}

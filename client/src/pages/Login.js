@@ -53,6 +53,10 @@ useEffect(()=>{
       className="register d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
+       {/* Floating Coins */}
+  <DotLottieReact src="/expenzo_lottie.lottie" autoplay loop className="coin" />
+  <DotLottieReact src="/expenzo_lottie.lottie" autoplay loop className="coin" />
+  <DotLottieReact src="/expenzo_lottie.lottie" autoplay loop className="coin" />
       {loading && <Spinner/>}
       <div className="row w-100 justify-content-center align-items-center h-100">
         {/* Form Section */}
