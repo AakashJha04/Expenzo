@@ -13,9 +13,9 @@ router.post("/add-transaction", async function (req, res) {
 });
 
 
-router.get("/get-all-transactions", async(req, res)=>{
+router.post("/get-all-transactions", async(req, res)=>{
     try {
-        const transaction = await Transaction.find({});
+        const transaction = await Transaction.find({userid: req.body.userid});
         res.send(transaction);
     } catch (error) {
         res.status(500).json(error);

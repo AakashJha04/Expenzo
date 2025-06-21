@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../component/Spinner";
 
-function AddEditTransaction({setShowAddEditTransactionModal, showAddEditTransactionModal}) {
+function AddEditTransaction({setShowAddEditTransactionModal, showAddEditTransactionModal, getTransactions}) {
 
     const [loading, setLoading] = useState(false);
     const onFinish = async (values) => {
@@ -17,6 +17,7 @@ function AddEditTransaction({setShowAddEditTransactionModal, showAddEditTransact
         autoClose: 3000,
         theme: "colored",
       });
+      getTransactions();
       setShowAddEditTransactionModal(false)
     } catch (error) {
       setLoading(false);
