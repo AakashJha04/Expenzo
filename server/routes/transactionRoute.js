@@ -15,16 +15,27 @@ router.post("/add-transaction", async function (req, res) {
   }
 });
 
-// Route to get all transactions from last 7 days for a user
+// Route to get all transactions based on frequency or custom date range
 router.post("/get-all-transactions", async (req, res) => {
+  const { frequency, selectedRange, userid } = req.body;
+
   try {
-    const { userid } = req.body;
+    let dateFilter = {};
+
+    if (frequency !== "custom") {
+      dateFilter.date = {
+        $gte: moment().subtract(Number(frequency), "d").toDate()
+      };
+    } else if (selectedRange && selectedRange.length === 2) {
+      dateFilter.date = {
+        $gte: new Date(selectedRange[0]),
+        $lte: new Date(selectedRange[1])
+      };
+    }
 
     const transactions = await Transaction.find({
-      userid: userid,
-      date: {
-        $gte: moment().subtract(30, "days").toDate(),
-      },
+      userid,
+      ...dateFilter
     });
 
     res.send(transactions);

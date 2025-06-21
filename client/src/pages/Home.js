@@ -1,88 +1,122 @@
-import React, { useEffect, useState } from 'react'
-import DefaultLayout from '../component/DefaultLayout'
-import '../resources/transactions.css'
+import React, { useEffect, useState } from 'react';
+import DefaultLayout from '../component/DefaultLayout';
+import '../resources/transactions.css';
 import AddEditTransaction from '../component/AddEditTransaction';
 import Spinner from "../component/Spinner";
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Table } from 'antd';
+import { DatePicker, Select, Table } from 'antd';
 import moment from "moment";
+
+const { RangePicker } = DatePicker;
 
 function Home() {
   const [showAddEditTransactionModal, setShowAddEditTransactionModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [transactionsData, setTransactionData] = useState([]);
-  
-  const getTransactions=async()=>{
+  const [frequency, setFrequency] = useState('7');
+  const [selectedRange, setSelectedRange] = useState([]);
+
+  const getTransactions = async () => {
     try {
-      const user = JSON.parse(localStorage.getItem( "expenzo-user"))
+      const user = JSON.parse(localStorage.getItem("expenzo-user"));
       setLoading(true);
-      const response = await axios.post("/api/transaction/get-all-transactions", {userid: user._id});
+
+      const payload = {
+        userid: user._id,
+        frequency,
+      };
+
+      if (frequency === 'custom' && selectedRange.length === 2) {
+        payload.selectedRange = [
+          selectedRange[0].toISOString(),
+          selectedRange[1].toISOString()
+        ];
+      }
+
+      const response = await axios.post("/api/transaction/get-all-transactions", payload);
       setTransactionData(response.data);
       setLoading(false);
     } catch (error) {
       setLoading(false);
+      console.error("Fetch Error:", error);
       toast.error("❌ Something went wrong", {
         position: "top-center",
         autoClose: 3000,
         theme: "colored",
       });
     }
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getTransactions();
-  },[]);
-
+  }, [frequency, selectedRange]);
 
   const columns = [
     {
       title: "Date",
       dataIndex: "date",
-      render:(record)=><label>{moment(record.date).format('YYYY-MM-DD')}</label>
+      render: (text) => <span>{moment(text).format('YYYY-MM-DD')}</span>
     },
-     {
+    {
       title: "Amount",
       dataIndex: "amount"
     },
-     {
+    {
       title: "Category",
       dataIndex: "category"
     },
-     {
+    {
       title: "Reference",
       dataIndex: "reference"
     },
-  ]
-
+  ];
 
   return (
-    <DefaultLayout> 
-      {loading && <Spinner/>}
+    <DefaultLayout>
+      {loading && <Spinner />}
       <div className="filter d-flex justify-content-between">
         <div>
+          <div className='d-flex flex-column'>
+            <h6>Select Frequency</h6>
+            <Select value={frequency} onChange={(value) => setFrequency(value)}>
+              <Select.Option value='7'>Last 1 Week</Select.Option>
+              <Select.Option value='30'>Last 1 Month</Select.Option>
+              <Select.Option value='365'>Last 1 Year</Select.Option>
+              <Select.Option value='custom'>Custom</Select.Option>
+            </Select>
+
+            {frequency === 'custom' && (
+              <div className='mt-2'>
+                <RangePicker
+                  value={selectedRange}
+                  onChange={(values) => setSelectedRange(values)}
+                />
+              </div>
+            )}
+          </div>
         </div>
 
         <div>
-          <button className='primary' onClick={()=>setShowAddEditTransactionModal(true)}>ADD NEW</button>
+          <button className='primary' onClick={() => setShowAddEditTransactionModal(true)}>ADD NEW</button>
         </div>
       </div>
 
       <div className='table-analytics'>
         <div className='table'>
-          <Table columns={columns} dataSource={transactionsData}/>
+          <Table columns={columns} dataSource={transactionsData} />
         </div>
       </div>
 
       {showAddEditTransactionModal && (
         <AddEditTransaction
-         showAddEditTransactionModal={showAddEditTransactionModal}
-         setShowAddEditTransactionModal={setShowAddEditTransactionModal}
-         getTransactions={getTransactions}
-         />)}
-
+          showAddEditTransactionModal={showAddEditTransactionModal}
+          setShowAddEditTransactionModal={setShowAddEditTransactionModal}
+          getTransactions={getTransactions}
+        />
+      )}
     </DefaultLayout>
-  )
+  );
 }
 
-export default Home
+export default Home;
