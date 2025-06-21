@@ -41,7 +41,7 @@ function Home() {
         ];
       }
 
-      const response = axiosInstance.post("/api/transaction/get-all-transactions", payload);
+      const response = await axiosInstance.post("/api/transaction/get-all-transactions", payload);
       setTransactionData(response.data);
       setLoading(false);
     } catch (error) {
