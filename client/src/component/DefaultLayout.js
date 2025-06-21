@@ -2,13 +2,15 @@ import React from "react";
 import { Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import "../resources/default-layout.css";
+import { useNavigate } from "react-router-dom";
 
 function DefaultLayout(props) {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("expenzo-user"));
 
   const handleLogout = () => {
     localStorage.removeItem("expenzo-user");
-    window.location.href = "/login"; // redirect to login
+    navigate('/login');
   };
 
   return (
