@@ -1,21 +1,93 @@
-.transactions-count{
-    box-shadow: 0 0 2px gray;
-    padding: 15px;
-    border-radius: 10px;
-    color:gray;
+:root {
+  --primary-purple: #a084dc;
+  --light-purple: #f1ebff;
+  --text-dark: #333333;
+  --text-muted: #777777;
+  --box-shadow: 0 4px 8px rgba(160, 132, 220, 0.2);
 }
 
-.analytics h4{
-    font-size: 25px;
+.analytics {
+  padding: 20px;
+  color: var(--text-dark);
 }
 
-.analytics h5{
-    font-size: 18px;
+/* Transaction Summary Cards */
+.transactions-count {
+  background: var(--light-purple);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.2s ease-in-out;
 }
 
-.category-card{
-    padding: 5px 20px; 
-    box-shadow: 0 0 20px gray;
-    margin-top: 15px;
-    border-radius: 10px;
+.transactions-count:hover {
+  transform: scale(1.02);
+}
+
+.analytics h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--primary-purple);
+}
+
+.analytics h5 {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.progress-bars {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Category Breakdown Cards */
+.category-card {
+  background: white;
+  box-shadow: var(--box-shadow);
+  margin-top: 15px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.category-card:hover {
+  transform: scale(1.01);
+}
+
+.category-card h5 {
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+/* Section titles */
+.income-category-analysis h4,
+.category-analysis h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--primary-purple);
+}
+
+/* Responsive Grid */
+
+@media screen and (max-width: 768px) {
+  .analytics .row {
+    flex-direction: column;
+  }
+
+  .progress-bars {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-card {
+    padding: 12px;
+  }
+
+  .category-analysis {
+    margin-top: 30px;
+  }
 }

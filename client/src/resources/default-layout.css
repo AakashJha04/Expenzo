@@ -1,40 +1,47 @@
-.layout{
-    margin: 0 100px;
+:root {
+  --primary-purple: #a084dc;
+  --light-purple: #ddd6f3;
+  --white-text: rgba(255, 255, 255, 0.9);
+  --light-shadow: rgba(0, 0, 0, 0.1);
 }
 
-.header{
-    background-color: lightblue;
-    padding: 20px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+.layout {
+  margin: 0 100px;
 }
 
-.logo{
-    font-size: 30px;
-    color: rgba(255, 255, 255, 0.716);
-    margin: 0 !important;
-    cursor: pointer;
+.header {
+  background: linear-gradient(to right, var(--primary-purple), #cbb4f0);
+  padding: 20px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 10px var(--light-shadow);
 }
 
-.username{
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.716);
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--white-text);
+  margin: 0;
+  cursor: pointer;
 }
 
-.content{
-    height: 85vh;
-    box-shadow: 0 0 3px gray;
-    margin-top: 20px;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    padding: 15px;
-    overflow-y: scroll;
+.username {
+  font-size: 18px;
+  margin-right: 12px;
+  color: var(--white-text);
 }
 
-@media screen and (max-width:700px){
-    .layout{
-        margin: 0 15px;
-    }
+.content {
+  height: 85vh;
+  background-color: #f9f8ff;
+  box-shadow: 0 0 6px var(--light-shadow);
+  margin-top: 20px;
+  border-radius: 25px;
+  padding: 15px;
+  overflow-y: auto;
 }
 
 .spinner {
@@ -42,14 +49,25 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999; /* High enough to appear on top */
+  z-index: 9999;
 }
 
-.ant-spin-dot-item{
-    background-color: gray !important;
+.ant-spin-dot-item {
+  background-color: var(--primary-purple) !important;
 }
 
-.username {
-  font-size: 18px;
-  margin-right: 10px;
+@media screen and (max-width: 768px) {
+  .layout {
+    margin: 0 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .username {
+    margin-right: 0;
+  }
 }

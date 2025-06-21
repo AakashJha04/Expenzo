@@ -1,24 +1,139 @@
-.filter{
-    box-shadow: 0 0 3px gray;
-    padding: 15px 20px;
-    border-radius: 10px;
+:root {
+  --primary-purple: #a084dc;
+  --hover-purple: #b7a1e4;
 }
 
-.view-switch{
-    border: 1px solid rgba(0,0,0,0.71) !important;
-    padding: 5px 10px;
-    border-radius: 5px;
+.filter {
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.anticon svg{
-    font-size: 20px;
+.view-switch {
+  border: 1px solid var(--primary-purple);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  background-color: #f5f0ff;
+  transition: background-color 0.3s ease;
 }
 
-.active-icon{
-    color: black;
+.anticon svg {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.anticon svg:hover {
+  transform: scale(1.2);
+}
+
+.active-icon {
+  color: var(--primary-purple);
+  font-weight: bold;
+}
+
+.inactive-icon {
+  color: grey;
+}
+
+button.primary {
+  background-color: var(--primary-purple);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.primary:hover {
+  background-color: var(--hover-purple);
+}
+
+.table-analytics {
+  margin-top: 20px;
+}
+
+/* Existing styles ... */
+
+@media screen and (max-width: 768px) {
+  .filter {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* 🟣 First Row: Frequency + Type */
+  .filter > .d-flex:nth-child(1) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .filter > .d-flex:nth-child(1) .flex-column {
+    flex: 1;
+    min-width: 45%;
+  }
+
+  /* 🟣 Second Row: View Switch + Button */
+  .filter > .d-flex:nth-child(2) {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .view-switch {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .ant-btn-primary {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .table {
+    overflow-x: scroll;
+  }
+
+  .category-analysis {
+    margin-top: 30px;
+  }
 }
 
 
-.inactive-icon{
-    color: grey;
+
+/* Make action icons bigger and more spaced in general */
+.action-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.action-icons .anticon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.action-icons .anticon:hover {
+  transform: scale(1.2);
+  color: var(--primary-purple);
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .action-icons {
+    justify-content: center;
+    gap: 24px;
+    font-size: 22px; /* Slightly larger for tap targets */
+  }
 }

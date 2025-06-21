@@ -10,6 +10,8 @@ import moment from "moment";
 import { AreaChartOutlined, DeleteOutlined, EditOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import Analytics from '../component/Analytics';
 import axiosInstance from '../utils/axiosInstance';
+import { Button } from "antd";
+
 
 const { RangePicker } = DatePicker;
 
@@ -180,7 +182,12 @@ function Home() {
             </div>
 
           </div>
-          <button className='primary' onClick={() => setShowAddEditTransactionModal(true)}>ADD NEW</button>
+            <Button type="primary" onClick={() => setShowAddEditTransactionModal(true)} style={{
+              backgroundColor: "#a084dc",
+              borderColor: "#a084dc",
+              borderRadius: "8px",
+              fontWeight: "bold"
+            }}>ADD NEW</Button>
         </div>
 
       </div>
