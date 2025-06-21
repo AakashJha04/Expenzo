@@ -3,3 +3,22 @@
     padding: 15px 20px;
     border-radius: 10px;
 }
+
+.view-switch{
+    border: 1px solid rgba(0,0,0,0.71) !important;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.anticon svg{
+    font-size: 20px;
+}
+
+.active-icon{
+    color: black;
+}
+
+
+.inactive-icon{
+    color: grey;
+}

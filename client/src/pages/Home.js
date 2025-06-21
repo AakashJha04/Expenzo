@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { DatePicker, Select, Table } from 'antd';
 import moment from "moment";
+import { AreaChartOutlined, UnorderedListOutlined } from '@ant-design/icons';
 
 const { RangePicker } = DatePicker;
 
@@ -17,6 +18,7 @@ function Home() {
   const [frequency, setFrequency] = useState('7');
   const [selectedRange, setSelectedRange] = useState([]);
   const [type, setType] = useState('all');
+  const [viewType, setViewType] = useState('table');
 
   const getTransactions = async () => {
     try {
@@ -112,9 +114,29 @@ function Home() {
           </div>
         </div>
 
-        <div>
+        <div className='d-flex'>
+          <div>
+            <div className='view-switch mx-5'>
+              <UnorderedListOutlined 
+              className={`mx-3 ${
+                viewType === "table" ? 'active-icon' : "inactive-icon"
+              }`}
+              onClick={()=>setViewType('table')}
+              size={50}
+              />
+              <AreaChartOutlined
+              className={`mx-3 ${
+                viewType === "analytics" ? 'active-icon' : "inactive-icon"
+              }`}
+              onClick={()=>setViewType('analytics')}
+              size={50}
+              />
+            </div>
+
+          </div>
           <button className='primary' onClick={() => setShowAddEditTransactionModal(true)}>ADD NEW</button>
         </div>
+
       </div>
 
       <div className='table-analytics'>
@@ -130,6 +152,8 @@ function Home() {
           getTransactions={getTransactions}
         />
       )}
+
+
     </DefaultLayout>
   );
 }
