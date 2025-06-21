@@ -17,7 +17,7 @@ router.post("/add-transaction", async function (req, res) {
 
 // Route to get all transactions based on frequency or custom date range
 router.post("/get-all-transactions", async (req, res) => {
-  const { frequency, selectedRange, userid } = req.body;
+  const { frequency, selectedRange, userid, type } = req.body;
 
   try {
     let dateFilter = {};
@@ -35,7 +35,8 @@ router.post("/get-all-transactions", async (req, res) => {
 
     const transactions = await Transaction.find({
       userid,
-      ...dateFilter
+      ...dateFilter,
+      ...(type!=='all' && {type})
     });
 
     res.send(transactions);

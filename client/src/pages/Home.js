@@ -16,6 +16,7 @@ function Home() {
   const [transactionsData, setTransactionData] = useState([]);
   const [frequency, setFrequency] = useState('7');
   const [selectedRange, setSelectedRange] = useState([]);
+  const [type, setType] = useState('all');
 
   const getTransactions = async () => {
     try {
@@ -25,6 +26,7 @@ function Home() {
       const payload = {
         userid: user._id,
         frequency,
+        type,
       };
 
       if (frequency === 'custom' && selectedRange.length === 2) {
@@ -50,7 +52,7 @@ function Home() {
 
   useEffect(() => {
     getTransactions();
-  }, [frequency, selectedRange]);
+  }, [frequency, selectedRange, type]);
 
   const columns = [
     {
@@ -67,6 +69,10 @@ function Home() {
       dataIndex: "category"
     },
     {
+      title: "Type",
+      dataIndex: "type"
+    },
+    {
       title: "Reference",
       dataIndex: "reference"
     },
@@ -76,7 +82,7 @@ function Home() {
     <DefaultLayout>
       {loading && <Spinner />}
       <div className="filter d-flex justify-content-between">
-        <div>
+        <div className='d-flex'>
           <div className='d-flex flex-column'>
             <h6>Select Frequency</h6>
             <Select value={frequency} onChange={(value) => setFrequency(value)}>
@@ -94,6 +100,15 @@ function Home() {
                 />
               </div>
             )}
+          </div>
+
+           <div className='d-flex flex-column mx-5'>
+            <h6>Select Type</h6>
+            <Select value={type} onChange={(value) => setType(value)}>
+              <Select.Option value='all'>All</Select.Option>
+              <Select.Option value='income'>Income</Select.Option>
+              <Select.Option value='expense'>Expense</Select.Option>
+            </Select>
           </div>
         </div>
 
